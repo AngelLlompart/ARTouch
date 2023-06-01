@@ -64,6 +64,7 @@ public class Zoom : MonoBehaviour
     {
         if (transform.localScale.y > 0.2f)
         {
+            
             transform.localScale -= scale;
         }
     }

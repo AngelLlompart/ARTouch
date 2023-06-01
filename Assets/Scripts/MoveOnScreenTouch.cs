@@ -5,7 +5,7 @@ using UnityEngine.InputSystem.EnhancedTouch;
 using Touch = UnityEngine.InputSystem.EnhancedTouch.Touch;
 using TouchPhase = UnityEngine.InputSystem.TouchPhase;
 
-public class RotateOnScreenSpace : MonoBehaviour
+public class MoveOnScreenTouch : MonoBehaviour
 {
     private ChangeTouchManager _changeTouchManager;
     private void Awake()
@@ -23,14 +23,14 @@ public class RotateOnScreenSpace : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (_changeTouchManager.isRotation)
+        if (!_changeTouchManager.isRotation)
         {
             if (Touch.activeTouches.Count == 1)
             {
                 if (Touch.activeTouches[0].phase == TouchPhase.Moved)
                 {
-                    transform.Rotate(-Touch.activeTouches[0].delta.y * 360 / Screen.height, 0, 0);
-                    transform.Rotate(0, 0, -Touch.activeTouches[0].delta.x * 360 / Screen.width);
+                    transform.Translate(-Touch.activeTouches[0].delta.x  / Screen.width, 0, 0);
+                    transform.Translate(0, -Touch.activeTouches[0].delta.y * 100, 0);
                 }
             }
 
@@ -40,7 +40,7 @@ public class RotateOnScreenSpace : MonoBehaviour
                     Touch.activeTouches[1].phase == TouchPhase.Moved &&
                     Touch.activeTouches[2].phase == TouchPhase.Moved)
                 {
-                    transform.Rotate(0, -Touch.activeTouches[0].delta.y * 360 / Screen.height, 0);
+                    transform.Rotate(0, 0, -Touch.activeTouches[0].delta.y  / Screen.height);
                 }
             }
         }
