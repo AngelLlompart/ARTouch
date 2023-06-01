@@ -23,14 +23,14 @@ public class MoveOnScreenTouch : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!_changeTouchManager.isRotation)
+        if (_changeTouchManager.isRotation == false)
         {
             if (Touch.activeTouches.Count == 1)
             {
                 if (Touch.activeTouches[0].phase == TouchPhase.Moved)
                 {
-                    transform.Translate(-Touch.activeTouches[0].delta.x  / Screen.width, 0, 0);
-                    transform.Translate(0, -Touch.activeTouches[0].delta.y * 100, 0);
+                    transform.position += Vector3.right * Touch.activeTouches[0].delta.x * Time.deltaTime;
+                    transform.position += Vector3.up * Touch.activeTouches[0].delta.y * Time.deltaTime;
                 }
             }
 
@@ -40,7 +40,7 @@ public class MoveOnScreenTouch : MonoBehaviour
                     Touch.activeTouches[1].phase == TouchPhase.Moved &&
                     Touch.activeTouches[2].phase == TouchPhase.Moved)
                 {
-                    transform.Rotate(0, 0, -Touch.activeTouches[0].delta.y  / Screen.height);
+                    transform.position += Vector3.forward * Touch.activeTouches[0].delta.y * Time.deltaTime;
                 }
             }
         }

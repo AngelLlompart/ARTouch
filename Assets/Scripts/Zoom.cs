@@ -52,7 +52,7 @@ public class Zoom : MonoBehaviour
         }
     }
 
-    public void ZoomIn()
+    private void ZoomIn()
     {
         if (transform.localScale.y < 2)
         {
@@ -60,7 +60,7 @@ public class Zoom : MonoBehaviour
         }
     }
 
-    public void ZoomOut()
+    private void ZoomOut()
     {
         if (transform.localScale.y > 0.2f)
         {

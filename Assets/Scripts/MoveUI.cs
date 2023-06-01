@@ -55,7 +55,6 @@ public class MoveUI : MonoBehaviour
 
     public void MoveUpTouchDown()
     {
-        Debug.Log("EE");
         upIsPressed = true;
     }
     
